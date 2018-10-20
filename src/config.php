@@ -32,7 +32,7 @@
 				}
 				$pdo = null;
 			} catch (PDOException $e) {
-				echo '{"error": {"text": "'.$e->getMessage().'"}}';
+				echo '{"error": {"err_text": "'.$e->getMessage().'"}}';
 			}
 		}
 
@@ -51,12 +51,12 @@
 				$statement->execute($params);
 
 				##### Print out the Response #####
-				echo '{"success": {"text": "'.$msg.'"}}';
+				echo '{"success": {"success_text": "'.$msg.'"}}';
 
 				// Close the Connection
 				$pdo = null;
 			} catch(PDOException $e) {
-				echo '{"error": {"text": "'.$e->getMessage().'"}}';
+				echo '{"error": {"err_text": "'.$e->getMessage().'"}}';
 			}
 		}
 
