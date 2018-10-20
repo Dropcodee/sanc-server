@@ -107,14 +107,14 @@ $app->post('/login', function($request, $response, $args) {
 			$db_param = ['user_id' => $id];
 			$db = new Db();
 			$db = $db->getQuery($sql, $db_param);
-			echo '{"success": {"text": "Logged In"}}';
+			echo '{"success": {"success_text": "Logged In"}}';
 			// echo json_encode($db);
 		} else {
-			echo '{"error": {"text": "Incorrect registration number or password"}}';
+			echo '{"error": {"err_text": "Incorrect registration number or password"}}';
 		}
 
 	} else {
-		echo '{"error": {"text": "Incorrect registration number"}}';
+		echo '{"error": {"err_text": "Incorrect registration number"}}';
 	}
 	
 });
