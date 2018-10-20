@@ -1,9 +1,9 @@
 <?php
 	class Db {
-		protected $dbhost = "localhost";
-		protected $dbname = "sanctuary";
-		protected $dbuser = "root";
-		protected $dbpass = "";
+		protected $dbhost = "sql7.freemysqlhosting.net";
+		protected $dbname = "sql7262031";
+		protected $dbuser = "sql7262031";
+		protected $dbpass = "Jesus_999";
 
 		public function connect() {
 			$dsn = 'mysql:host='.$this->dbhost.';dbname='.$this->dbname.'';
