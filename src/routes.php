@@ -50,36 +50,24 @@ $app->get('/users/{reg_no}', function($request, $response, $args) {
  ******************** Signup a Sanctuary User *********************
  *************************************************************/
 $app->post('/add', function($request, $response, $args) {
-	$user_id = "1234567890";
 	$name = $request->getParam('name');
 	$reg_no = $request->getParam('reg_no');
 	$webmail = $request->getParam('webmail');
-	$level = $request->getParam('level');
-	$dob = $request->getParam('dob');
-	$room = $request->getParam('room');
-	$hall = $request->getParam('hall');
-	$sex = $request->getParam('sex');
 	$reasons = $request->getParam('reasons');
 	$membership = $request->getParam('membership');
 	$password = $request->getParam('password');
 
-	$sql = "INSERT INTO users (user_id, name, webmail, reg_no, level, dob, hall, room, sex, reasons, membership, password) VALUES (:user_id, :name, :webmail, :reg_no, :level, :dob, :hall, :room, :sex, :reasons, :membership, :password)";
+	$sql = "INSERT INTO users (name, webmail, reg_no, reasons, membership, password) VALUES (:name, :webmail, :reg_no, :reasons, :membership, :password)";
 	$db_params = [
-		'user_id' => password_hash($user_id, PASSWORD_DEFAULT),
 		'name' => $name,
 		'password' => password_hash($password, PASSWORD_BCRYPT, [12]),
 		'webmail' => $webmail,
-		'level' => $level,
-		'dob' => $dob,
 		'reg_no' => $reg_no,
-		'room' => $room,
-		'hall' => $hall,
-		'sex' => $sex,
 		'reasons' => $reasons,
 		'membership' => $membership,
 	];
 	$db = new Db();
-	$add = $db->postQuery($sql, $db_params, $msg = ''.$name.' has been added successfully');
+	$add = $db->postQuery($sql, $db_params, $msg = 'Dear, '.$name.' please wait for approval');
 });
 
 /*************************************************************
